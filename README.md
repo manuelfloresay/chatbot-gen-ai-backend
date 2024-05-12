@@ -7,7 +7,7 @@
 * Programming language: Python 
 * Large language model (LLM): Claude 
 * Cloud AI Tool: Amazon Bedrock 
-* Framework LangChain, FastAPI 
+* Frameworks: LangChain, FastAPI 
 * Database: DynamoDB 
 
 ### Purpose:
