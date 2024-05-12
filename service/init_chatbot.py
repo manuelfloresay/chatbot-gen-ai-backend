@@ -1,5 +1,6 @@
 import boto3
 from langchain.agents import initialize_agent, Tool
+from langchain.agents import load_tools
 from langchain.agents import AgentType
 from langchain.llms.bedrock import Bedrock
 from service.db import get_item_from_dynamodb
