@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.params import Depends
-from service.connection_service import get_chatbot_answer
+from service.db import get_chatbot_answer
 from service.init_chatbot import init_chatbot
 from models import Request, Response
 router = APIRouter(prefix="/prompt")
