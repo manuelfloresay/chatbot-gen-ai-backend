@@ -4,8 +4,11 @@ from langchain.agents import load_tools
 from langchain.agents import AgentType
 from langchain.llms.bedrock import Bedrock
 from db.get_db import get_item_from_dynamodb
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 def init_chatbot():
+    logging.info("Connecting to LLM model in AWS")
     model_parameter = {"temperature": 0.0, "top_p": .5, "max_tokens_to_sample": 4000}
     #boto3_bedrock = boto3.client(service_name='bedrock-runtime', region_name=os.environ["AWS_DEFAULT_REGION"])
     boto3_bedrock = boto3.client(service_name='bedrock-runtime', region_name='us-east-1')
