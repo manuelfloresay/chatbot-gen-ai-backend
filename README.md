@@ -11,4 +11,4 @@
 * Database: DynamoDB 
 
 ### Purpose:
-Allow a chatbot to retrieve information of a user by its Rut (National id), this information is not obtained from the knowledge the chatbor was trained on, but it is directly obtained in real-time from a cloud Database (DynamoDB), this is used to demonstrate how to increate Chatbot capabilities by allowing them to access information from a different source.
+Chatbot that can retrieve information from a database in real-time, thus allowing it to provide accurate and updated critical information, not only the information obtained through pre-training. It is obtaining the information of a user by its national id (Rut), this is obtained from a cloud Database DynamoDB, although we may update or change the database or datasource.
