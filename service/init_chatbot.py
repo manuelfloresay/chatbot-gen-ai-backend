@@ -3,7 +3,7 @@ from langchain.agents import initialize_agent, Tool
 from langchain.agents import load_tools
 from langchain.agents import AgentType
 from langchain.llms.bedrock import Bedrock
-from service.db import get_item_from_dynamodb
+from db.get_db import get_item_from_dynamodb
 
 def init_chatbot():
     model_parameter = {"temperature": 0.0, "top_p": .5, "max_tokens_to_sample": 4000}
