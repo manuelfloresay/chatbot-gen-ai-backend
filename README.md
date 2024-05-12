@@ -1,5 +1,5 @@
 # Generative AI Chatbot
-![alt Chatbot](docs/images/chat_bot.png)
+![alt Chatbot](docs/images/ia-chatbot.png)
 
 ---
 
