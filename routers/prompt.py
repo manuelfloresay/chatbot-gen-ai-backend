@@ -14,4 +14,4 @@ def create_item(request: Request) -> Response:
         \n\nAssistant: Here is the one sentence summary:
         """
     result = react_agent.run(prompt_template)
-    return {'response': result}
+    return Response(result)
