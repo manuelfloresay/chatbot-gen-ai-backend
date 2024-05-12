@@ -7,11 +7,11 @@ router = APIRouter(prefix="/prompt")
 react_agent = init_chatbot()
 
 @router.post("")
-def create_item(request: Request) -> Response:
+def create_item(request):
     prompt_template = f"""
         \n\nHuman: {request.question}
 
         \n\nAssistant: Here is the one sentence summary:
         """
     result = react_agent.run(prompt_template)
-    return Response(result)
+    return {'answer': result}
