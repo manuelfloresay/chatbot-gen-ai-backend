@@ -1,0 +1,2 @@
+class Response:
+    answer = None
