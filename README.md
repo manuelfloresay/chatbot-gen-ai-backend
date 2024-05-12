@@ -5,9 +5,13 @@
 
 ### Project details:
 Programming language: Python
+
 Large language model (LLM): Claude
+
 Cloud AI Tool: Amazon Bedrock
+
 Framework LangChain, FastAPI
+
 Database: DynamoDB
 
 ### Purpose:
