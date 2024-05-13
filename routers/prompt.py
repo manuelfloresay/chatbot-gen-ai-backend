@@ -9,7 +9,7 @@ router = APIRouter(prefix="/prompt")
 react_agent = init_chatbot()
 
 @router.get("")
-def create_item(request):
+def ask_question(request):
     logging.info("Initializing promt building")
     prompt_template = f"""
         \n\nHuman: {request}
