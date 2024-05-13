@@ -16,5 +16,7 @@ def ask_question(request):
 
         \n\nAssistant: Here is the one sentence summary:
         """
+    logging.info("Prompt: %s", prompt_template)
     result = react_agent.run(prompt_template)
+    logging.info("Answer: %s", result)
     return {'answer': result}

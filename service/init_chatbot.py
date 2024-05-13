@@ -22,4 +22,5 @@ def init_chatbot():
         ))
 
     react_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
+    logging.info("Agent properly initialized in AWS")
     return react_agent
