@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.params import Depends
 from service.init_chatbot import init_chatbot
+from service.validate_answer import validate_answer
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -21,18 +22,6 @@ def ask_question(request):
         \n\nChatbot: 
         """
     logging.info("Prompt: %s", prompt_template)
-    try:
-        result = react_agent.run(prompt_template)
-    except Exception as e:
-        logging.error("Error asking question to chatbot: %s, attempting to parse Chatbot answer", e)
-
-        error = str(e)
-        if "Could not parse LLM output: `" not in error:
-            return {'answer': 'Please try using a different word or a different question'}
-        
-        result = error.split("Could not parse LLM output: `")[1].strip("`")
-        logging.info("Found valid answer %s", result)
-        return {'answer': result}
-        
-    logging.info("Answer: %s", result)
-    return {'answer': result}
+    response = validate_answer(prompt_template, react_agent)
+    
+    return {'answer': response}
