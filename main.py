@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 import uvicorn
 from routers.prompt import router
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = FastAPI()
 app.include_router(router)

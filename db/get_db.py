@@ -1,11 +1,14 @@
 import boto3
 import json
 import logging
+import os
 logging.basicConfig(level=logging.DEBUG)
+logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
 def get_item_from_dynamodb(rut):
-  logging.info("Initializing connection to Cloud Database")
-  dynamodb = boto3.client("dynamodb", region_name='us-east-1')
-  found_customer = dynamodb.get_item(TableName='customer', Key={'rut':{'S':rut}})
-  logging.debug("Item found in Database: %s", found_customer)
+  logging.info("Querying database using rut %s", rut)
+  dynamodb = boto3.client("dynamodb", region_name=os.environ.get("DATABASE_AWS_REGION"))
+  found_customer = dynamodb.get_item(TableName=os.environ.get("DYNAMODB_TABLE"), Key={os.environ.get("TABLE_PARTITION_KEY"):{'S':os.environ.get("TABLE_PARTITION_VALUE")}, 'rut':{'S': str(rut)}})
+  logging.debug("Item found in Database for rut %s: %s", rut, found_customer)
   return found_customer['Item']
