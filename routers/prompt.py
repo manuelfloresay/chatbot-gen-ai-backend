@@ -23,8 +23,16 @@ def ask_question(request):
     logging.info("Prompt: %s", prompt_template)
     try:
         result = react_agent.run(prompt_template)
-    except Exception as err:
-        logging.error("Error asking question to chatbot: %s", err)
-        return {'answer': 'Please try using a different word or a different question'}
+    except Exception as e:
+        logging.error("Error asking question to chatbot: %s, attempting to parse Chatbot answer", e)
+
+        error = str(e)
+        if "Could not parse LLM output: `" not in error:
+            return {'answer': 'Please try using a different word or a different question'}
+        
+        result = error.split("Could not parse LLM output: `")[1].strip("`")
+        logging.info("Found valid answer %s", result)
+        return {'answer': result}
+        
     logging.info("Answer: %s", result)
     return {'answer': result}
