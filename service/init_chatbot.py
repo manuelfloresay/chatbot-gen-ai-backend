@@ -8,10 +8,12 @@ from db.get_db import get_item_from_dynamodb
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+from dotenv import load_dotenv
+load_dotenv()
 
 def init_chatbot():
     logging.info("Connecting to LLM model in AWS")
-    model_parameter = {"temperature": os.environ.get("TEMPERATURE"), "top_p": os.environ.get("TOP_P"), "max_tokens_to_sample": os.environ.get("MAX_TOKENS_TO_SAMPLE")}
+    model_parameter = {"temperature": float(os.environ.get("TEMPERATURE")), "top_p": float(os.environ.get("TOP_P")), "max_tokens_to_sample": int(os.environ.get("MAX_TOKENS_TO_SAMPLE"))}
     boto3_bedrock = boto3.client(service_name='bedrock-runtime', region_name=os.environ.get("LLM_AWS_REGION"))
     llm = Bedrock(model_id=os.environ.get("LLM_MODEL_ID"), client=boto3_bedrock, model_kwargs=model_parameter)
 
