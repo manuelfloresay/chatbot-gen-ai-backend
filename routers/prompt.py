@@ -24,7 +24,7 @@ def ask_question(request):
     try:
         result = react_agent.run(prompt_template)
     except Exception as e:
-        logging.error("Error asking question to chatbot: %s", e)
+        logging.error("Error processing response from chatbot: %s", e)
         raise e
         
     logging.info("Answer: %s", result)
