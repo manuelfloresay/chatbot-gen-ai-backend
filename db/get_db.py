@@ -7,7 +7,7 @@ logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 def get_item_from_dynamodb(rut):
-  # Remove unwanted new lines or tab
+  # removing unwanted new lines or tab
   rut = rut.strip('\n').strip('\t')
   logging.info("Querying database using rut %s", rut)
   dynamodb = boto3.client("dynamodb", region_name=os.environ.get("DATABASE_AWS_REGION"))
