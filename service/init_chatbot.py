@@ -25,6 +25,6 @@ def init_chatbot():
             description="Use this when you need to lookup a customer by rut."
         ))
 
-    react_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
+    react_agent = initialize_agent(tools, llm, agent=AgentType.CHAT_ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
     logging.info("Agent properly initialized in AWS")
     return react_agent
